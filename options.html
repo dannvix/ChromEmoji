@@ -1,0 +1,51 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>ChromEmoji Options</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      h3#msgbox {
+        display: none;
+        color: Red;
+      }
+      input {
+        border: 1px solid #ACACAC;
+        -webkit-border-radius: 10px;
+        background: #FAFAFA;
+      }
+      input#amount {
+        border: 1px solid;
+        text-align: center;
+        font-size: 20pt;
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        if (localStorage.emojiAmount) {
+          $("#amount").val(localStorage.emojiAmount);
+        }
+      });
+
+      function save() {
+        localStorage.emojiAmount = ($("#amount").val());
+        $("#msgbox").html("<img src=\"check.png\" /> Saved!");
+        $("#msgbox").show(100);
+
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>↙ ChromEmoji Options ↗</h1>
+    <h3 id="msgbox"></h3>
+    <p>
+      <form onsubmit="return save();">
+        <p>I wanna generate <input type="text" id="amount" size="1"/> Emoji each time</p>
+        <p><input type="submit" value="Save" /></p>
+      </form>
+    </p>
+  </body>
+</html>

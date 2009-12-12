@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ChromEmoji</title>
+    <style>
+      body {
+        min-width: 200px;
+        min-height: 150px;
+        overflow-x: hidden;
+        text-align: center;
+      }
+      h1 {
+        font-family: "Arial";
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      Array.prototype.random = function() {
+        return this[Math.floor(Math.random()*this.length)];
+      }
+      function emoji() {
+        var amount = 3;
+        if (localStorage.emojiAmount) {
+          amount = localStorage.emojiAmount;
+        }
+        while (amount) {
+          $("p#emoji").append("<p><h1>" + generate() + "</h1></p>");
+          amount = amount - 1;
+        }
+      }
+      function generate() {
+        var a = [ ["(",")"],
+                  ["[", "]"],
+                  ["|", "|"],
+                  ["{", "}"],
+                  ["（", "）"],
+                  ["\\", "/"],
+                  ["#", "#"],
+                  ["《", "》"]
+                ].random();
+        var b = [ ["^", "^"],
+                  [">", "<"],
+                  ["╹", "╹"],
+                  ["`", "´"],
+                  ["´", "`"],
+                  ["=", "="],
+                  ["・", "・"],
+                  ["≧", "≦"],
+                  ["@", "@"],
+                  ["→", "→"],
+                  ["Q", "Q"],
+                  ["o", "O"],
+                  ["π", "π"],
+                  ["╯", "╰"],
+                  ["⊙", "⊙"],
+                  ["〒", "〒"]
+                ].random();
+        var c = [ "x", "∀", "▽", "△", "Д",
+                  "◡", "□", "～", "ー", "ェ",
+                  "✿","o", "3", "︿", "﹏",
+                  "_", "∩", "∪", "▼", "▲",
+                  "◆", "◇", "■", "ㅈ", "ㅅ",
+                  "ㅆ", "３", "ω",
+                ].random();
+        var d = [ ["Y", "Y"],
+                  ["↙", "↗"],
+                  ["", ""],
+                  ["◐", "◑"],
+                  ["↘", "↖"],
+                  ["〤", ""],
+                  ["", "〤"],
+                  ["Σ", ""],
+                  ["", "Σ"],
+                  ["∫", ""],
+                  ["", "∫"],
+                  ["<", "/"],
+                  ["\\", "/"],
+                ].random();
+        return (d[0]+a[0]+b[0]+c+b[1]+a[1]+d[1]);
+      }
+    </script>
+  </head>
+  <body onload="javascript: emoji();">
+    <p id="emoji">
+    </p>
+  </body>
+</html>
